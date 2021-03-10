@@ -1,7 +1,8 @@
-package com.georgcantor.instagramclone
+package com.georgcantor.instagramclone.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.georgcantor.instagramclone.R
 
 class MainActivity : AppCompatActivity() {
 
