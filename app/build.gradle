@@ -22,6 +22,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'BASE_URL', "\"https://pixabay.com/api/\"";
+        it.buildConfigField 'String', 'PIXABAY_KEY', "\"9179624-180dd31b7b27ed73810aeeb72\""
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
