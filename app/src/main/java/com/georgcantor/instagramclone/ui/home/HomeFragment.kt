@@ -5,14 +5,21 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.georgcantor.instagramclone.R
 import com.georgcantor.instagramclone.databinding.FragmentHomeBinding
+import com.georgcantor.instagramclone.ui.home.adapter.FeedAdapter
+import org.koin.android.ext.android.inject
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private var binding: FragmentHomeBinding? = null
+    private val viewModel by inject<HomeViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
+
+        viewModel.pictures.observe(viewLifecycleOwner) {
+            binding?.feedRecycler?.adapter = FeedAdapter(it)
+        }
     }
 
     override fun onDestroy() {

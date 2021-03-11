@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.georgcantor.instagramclone.R
 import com.georgcantor.instagramclone.util.loadImage
 
-class PagerAdapter(private val urls: List<String>) :
-    RecyclerView.Adapter<PagerAdapter.PagerViewHolder>() {
+class PagerAdapter(private val urls: List<String>) : RecyclerView.Adapter<PagerAdapter.PagerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PagerViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_pager, parent, false)

@@ -13,7 +13,7 @@ data class Hit(
     var downloads: Int = 0,
     var pageURL: String?,
     var previewURL: String?,
-    var webformatURL: String?,
+    var webformatURL: String,
     var imageURL: String?,
     var fullHDURL: String?,
     var imageWidth: Int = 0,

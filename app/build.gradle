@@ -25,7 +25,7 @@ android {
 
     buildTypes.each {
         it.buildConfigField 'String', 'BASE_URL', "\"https://pixabay.com/api/\"";
-        it.buildConfigField 'String', 'PIXABAY_KEY', "\"9179624-180dd31b7b27ed73810aeeb72\""
+        it.buildConfigField 'String', 'PIXABAY_KEY', "\"your_key\""
     }
 
     compileOptions {
