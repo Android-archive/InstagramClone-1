@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("?key=$PIXABAY_KEY")
-    suspend fun getPixabayPictures(
+    suspend fun getPictures(
         @Query("q") query: String,
         @Query("page") index: Int
     ): Response<Pic>
