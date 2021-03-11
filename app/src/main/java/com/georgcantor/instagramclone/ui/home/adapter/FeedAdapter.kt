@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.georgcantor.instagramclone.R
 import com.georgcantor.instagramclone.model.response.Hit
-import com.georgcantor.instagramclone.util.loadImage
+import com.georgcantor.instagramclone.util.loadCircleImage
 
 class FeedAdapter(private val pictures: List<Hit>) : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
 
@@ -20,7 +20,7 @@ class FeedAdapter(private val pictures: List<Hit>) : RecyclerView.Adapter<FeedAd
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
         val picture = pictures[position]
         with(holder) {
-            itemView.context.loadImage(picture.userImageURL, icon)
+            itemView.context.loadCircleImage(picture.userImageURL, icon)
             name.text = picture.user
             viewPager.adapter = PagerAdapter(listOf(picture.webformatURL, picture.webformatURL))
         }

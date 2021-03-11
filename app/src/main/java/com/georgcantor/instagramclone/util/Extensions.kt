@@ -12,3 +12,8 @@ fun Context.isNetworkAvailable() = (getSystemService(CONNECTIVITY_SERVICE) as Co
 fun Context.loadImage(url: String?, imageView: ImageView) = Glide.with(this)
     .load(url)
     .into(imageView)
+
+fun Context.loadCircleImage(url: String?, imageView: ImageView) = Glide.with(this)
+    .load(url)
+    .circleCrop()
+    .into(imageView)

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.georgcantor.instagramclone.R
 import com.georgcantor.instagramclone.databinding.FragmentHomeBinding
 import com.georgcantor.instagramclone.ui.home.adapter.FeedAdapter
+import com.georgcantor.instagramclone.ui.home.adapter.HeaderAdapter
 import org.koin.android.ext.android.inject
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -18,6 +19,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding = FragmentHomeBinding.bind(view)
 
         viewModel.pictures.observe(viewLifecycleOwner) {
+            binding?.headerRecycler?.adapter = HeaderAdapter(it)
             binding?.feedRecycler?.adapter = FeedAdapter(it)
         }
     }
