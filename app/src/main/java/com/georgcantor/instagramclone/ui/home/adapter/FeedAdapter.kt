@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getDrawable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +36,15 @@ class FeedAdapter(
                     super.onPageSelected(position)
                 }
             })
+            fav.setOnClickListener {
+                fav.setImageResource(
+                    when (fav.drawable.constantState) {
+                        getDrawable(itemView.context, R.drawable.ic_favorite)?.constantState -> R.drawable.ic_favorite_red
+                        getDrawable(itemView.context, R.drawable.ic_favorite_red)?.constantState -> R.drawable.ic_favorite
+                        else -> R.drawable.ic_favorite
+                    }
+                )
+            }
         }
     }
 
@@ -45,6 +55,7 @@ class FeedAdapter(
         val name: TextView = view.findViewById(R.id.name)
         val indices: TextView = view.findViewById(R.id.pager_indices)
         val viewPager: ViewPager2 = view.findViewById(R.id.view_pager)
+        val fav: ImageView = view.findViewById(R.id.fav)
 
         fun setPageIndex(index: Int, allIndex: Int) {
             indices.text = "$index/$allIndex"
