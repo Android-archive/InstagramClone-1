@@ -1,3 +1,3 @@
 # InstagramClone
 
-[![ezgif-com-gif-maker-11.gif](https://i.postimg.cc/66hFh5pC/ezgif-com-gif-maker-11.gif)](https://postimg.cc/bds6yPbv)
+[![ezgif-com-gif-maker-14.gif](https://i.postimg.cc/WpdQJ9pg/ezgif-com-gif-maker-14.gif)](https://postimg.cc/PNk6gQw5)
