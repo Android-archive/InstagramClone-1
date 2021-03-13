@@ -7,6 +7,7 @@ import com.georgcantor.instagramclone.R
 import com.georgcantor.instagramclone.databinding.FragmentHomeBinding
 import com.georgcantor.instagramclone.ui.home.adapter.FeedAdapter
 import com.georgcantor.instagramclone.ui.home.adapter.HeaderAdapter
+import com.georgcantor.instagramclone.util.shortToast
 import org.koin.android.ext.android.inject
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -17,6 +18,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
+
+        binding?.toolbar?.apply {
+            inflateMenu(R.menu.main_menu)
+            setOnMenuItemClickListener { context?.shortToast("direct"); true }
+        }
 
         viewModel.pictures.observe(viewLifecycleOwner) {
             binding?.headerRecycler?.adapter = HeaderAdapter(it)
