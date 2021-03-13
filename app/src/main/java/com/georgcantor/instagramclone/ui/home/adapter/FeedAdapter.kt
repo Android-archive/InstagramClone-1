@@ -13,6 +13,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.georgcantor.instagramclone.R
 import com.georgcantor.instagramclone.model.response.Hit
 import com.georgcantor.instagramclone.util.loadCircleImage
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class FeedAdapter(
     private val pictures: List<Hit>,
@@ -36,6 +38,8 @@ class FeedAdapter(
                     super.onPageSelected(position)
                 }
             })
+            TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
+
             fav.setOnClickListener {
                 fav.setImageResource(
                     when (fav.drawable.constantState) {
@@ -55,6 +59,7 @@ class FeedAdapter(
         val name: TextView = view.findViewById(R.id.name)
         val indices: TextView = view.findViewById(R.id.pager_indices)
         val viewPager: ViewPager2 = view.findViewById(R.id.view_pager)
+        val tabLayout: TabLayout = view.findViewById(R.id.tab_layout)
         val fav: ImageView = view.findViewById(R.id.fav)
 
         fun setPageIndex(index: Int, allIndex: Int) {
