@@ -1,4 +1,4 @@
-package com.georgcantor.instagramclone.ui.home
+package com.georgcantor.instagramclone.ui.search
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import com.georgcantor.instagramclone.model.response.Hit
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 
-class HomeViewModel(repository: Repository) : ViewModel() {
+class SearchViewModel(repository: Repository) : ViewModel() {
 
     val pictures = MutableLiveData<List<Hit>>()
     val error = MutableLiveData<String>()
@@ -19,7 +19,7 @@ class HomeViewModel(repository: Repository) : ViewModel() {
 
     init {
         viewModelScope.launch(exceptionHandler) {
-            repository.getPictures("art").apply {
+            repository.getPictures("sea").apply {
                 if (isSuccessful) pictures.postValue(body()?.hits)
             }
         }
