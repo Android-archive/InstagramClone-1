@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.georgcantor.instagramclone.R
-import com.georgcantor.instagramclone.model.response.Hit
+import com.georgcantor.instagramclone.model.response.Picture
 import com.georgcantor.instagramclone.util.loadCircleImage
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class FeedAdapter(
-    private val pictures: List<Hit>,
-) : ListAdapter<Hit, FeedAdapter.FeedViewHolder>(ItemDiffCallback()) {
+    private val pictures: List<Picture>,
+) : ListAdapter<Picture, FeedAdapter.FeedViewHolder>(ItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = FeedViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_feed, parent, false)
@@ -67,8 +67,8 @@ class FeedAdapter(
         }
     }
 
-    class ItemDiffCallback : DiffUtil.ItemCallback<Hit>() {
-        override fun areItemsTheSame(old: Hit, new: Hit) = old == new
-        override fun areContentsTheSame(old: Hit, new: Hit) = old.id == new.id
+    class ItemDiffCallback : DiffUtil.ItemCallback<Picture>() {
+        override fun areItemsTheSame(old: Picture, new: Picture) = old == new
+        override fun areContentsTheSame(old: Picture, new: Picture) = old.id == new.id
     }
 }

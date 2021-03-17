@@ -1,4 +1,4 @@
-package com.georgcantor.instagramclone.model
+package com.georgcantor.instagramclone.model.api
 
 import com.georgcantor.instagramclone.BuildConfig.PIXABAY_KEY
 import com.georgcantor.instagramclone.model.response.Pic

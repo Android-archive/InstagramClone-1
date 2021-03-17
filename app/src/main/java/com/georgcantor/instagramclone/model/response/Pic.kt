@@ -1,7 +1,7 @@
 package com.georgcantor.instagramclone.model.response
 
-data class Pic(
+class Pic(
     var totalHits: Int = 0,
-    var hits: List<Hit>,
+    var hits: List<Picture>,
     private var total: Int = 0
 )

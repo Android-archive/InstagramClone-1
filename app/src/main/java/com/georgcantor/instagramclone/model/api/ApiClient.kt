@@ -1,4 +1,4 @@
-package com.georgcantor.instagramclone.model
+package com.georgcantor.instagramclone.model.api
 
 import android.content.Context
 import com.georgcantor.instagramclone.BuildConfig.BASE_URL

@@ -1,6 +1,6 @@
 package com.georgcantor.instagramclone.model.response
 
-data class Hit(
+class Picture(
     var previewHeight: Int = 0,
     var likes: Int = 0,
     var favorites: Int = 0,

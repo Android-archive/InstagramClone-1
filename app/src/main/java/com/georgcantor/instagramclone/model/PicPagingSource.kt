@@ -1,14 +1,14 @@
 package com.georgcantor.instagramclone.model
 
 import androidx.paging.PagingSource
-import com.georgcantor.instagramclone.model.response.Hit
+import com.georgcantor.instagramclone.model.response.Picture
 
 class PicPagingSource(
     private val repository: Repository,
     private val query: String
-) : PagingSource<Int, Hit>() {
+) : PagingSource<Int, Picture>() {
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Hit> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Picture> {
         return try {
             val nextPage = params.key ?: 1
             val response = repository.getPictures(query, nextPage)
