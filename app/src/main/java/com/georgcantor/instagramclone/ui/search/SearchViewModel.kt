@@ -1,27 +1,19 @@
 package com.georgcantor.instagramclone.ui.search
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.georgcantor.instagramclone.model.PicPagingSource
 import com.georgcantor.instagramclone.model.Repository
 import com.georgcantor.instagramclone.model.response.Hit
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.Flow
 
-class SearchViewModel(repository: Repository) : ViewModel() {
+class SearchViewModel(private val repository: Repository) : ViewModel() {
 
-    val pictures = MutableLiveData<List<Hit>>()
-    val error = MutableLiveData<String>()
-
-    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        error.postValue(throwable.message)
-    }
-
-    init {
-        viewModelScope.launch(exceptionHandler) {
-            repository.getPictures("sea").apply {
-                if (isSuccessful) pictures.postValue(body()?.hits)
-            }
-        }
+    fun getPictures(): Flow<PagingData<Hit>> {
+        return Pager(PagingConfig(20)) {
+            PicPagingSource(repository, "sea")
+        }.flow
     }
 }

@@ -3,9 +3,13 @@ package com.georgcantor.instagramclone.ui.search
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.georgcantor.instagramclone.R
 import com.georgcantor.instagramclone.databinding.FragmentSearchBinding
+import com.georgcantor.instagramclone.util.shortToast
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
@@ -19,10 +23,17 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         val manager = GridLayoutManager(requireContext(), 3)
 
-        binding?.searchRecycler?.layoutManager = manager
+        val adapter = SearchAdapter {
+            context?.shortToast(it?.user ?: "none")
+        }
 
-        viewModel.pictures.observe(viewLifecycleOwner) {
-            binding?.searchRecycler?.adapter = SearchAdapter(it)
+        binding?.searchRecycler?.layoutManager = manager
+        binding?.searchRecycler?.adapter = adapter
+
+        lifecycleScope.launch {
+            viewModel.getPictures().collectLatest {
+                adapter.submitData(it)
+            }
         }
     }
 

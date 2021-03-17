@@ -19,7 +19,7 @@ class HomeViewModel(repository: Repository) : ViewModel() {
 
     init {
         viewModelScope.launch(exceptionHandler) {
-            repository.getPictures("art").apply {
+            repository.getPictures("art", 1).apply {
                 if (isSuccessful) pictures.postValue(body()?.hits)
             }
         }
