@@ -30,7 +30,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         binding?.searchRecycler?.layoutManager = manager
         binding?.searchRecycler?.adapter = adapter
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getPictures().collectLatest {
                 adapter.submitData(it)
             }
