@@ -7,7 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.georgcantor.instagramclone.R
 import com.georgcantor.instagramclone.databinding.FragmentHomeBinding
-import com.georgcantor.instagramclone.ui.home.adapter.SearchAdapter
+import com.georgcantor.instagramclone.ui.home.adapter.FeedAdapter
 import com.georgcantor.instagramclone.util.shortToast
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -24,7 +24,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         val manager = LinearLayoutManager(requireContext())
 
-        val adapter = SearchAdapter {
+        val adapter = FeedAdapter {
             context?.shortToast(it?.user ?: "none")
         }
 
