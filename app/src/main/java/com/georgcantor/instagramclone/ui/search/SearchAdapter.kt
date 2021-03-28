@@ -30,7 +30,6 @@ class SearchAdapter(
     companion object {
         object DiffCallback : DiffUtil.ItemCallback<Picture>() {
             override fun areItemsTheSame(old: Picture, new: Picture) = old == new
-
             override fun areContentsTheSame(old: Picture, new: Picture) = old.id == new.id
         }
     }

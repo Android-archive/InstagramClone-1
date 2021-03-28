@@ -22,6 +22,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
 
+        binding?.toolbar?.apply {
+            inflateMenu(R.menu.main_menu)
+            setOnMenuItemClickListener { context?.shortToast("direct"); true }
+        }
+
         val manager = LinearLayoutManager(requireContext())
 
         val adapter = FeedAdapter {
@@ -36,10 +41,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 adapter.submitData(it)
             }
         }
-
-//        viewModel.pictures.observe(viewLifecycleOwner) {
-//            binding?.headerRecycler?.adapter = HeaderAdapter(it)
-//        }
     }
 
     override fun onDestroy() {
