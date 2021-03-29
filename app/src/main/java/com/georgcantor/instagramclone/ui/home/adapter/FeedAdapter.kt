@@ -13,6 +13,7 @@ import com.georgcantor.instagramclone.databinding.ItemHeaderBinding
 import com.georgcantor.instagramclone.model.response.Picture
 import com.georgcantor.instagramclone.util.loadCircleImage
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlin.random.Random
 
 class FeedAdapter(
     private val clickListener: (Picture?) -> Unit
@@ -34,7 +35,8 @@ class FeedAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val pic = getItem(position)
-        val images = listOf(pic?.webformatURL, pic?.webformatURL, pic?.webformatURL)
+        val images = mutableListOf<String?>()
+        (1..Random.nextInt(2,6)).forEach { images.add(pic?.webformatURL) }
 
         when (holder) {
             is FeedViewHolder -> {
