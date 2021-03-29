@@ -36,6 +36,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding?.feedRecycler?.layoutManager = manager
         binding?.feedRecycler?.adapter = adapter
 
+        viewModel.pictures.observe(viewLifecycleOwner) { adapter.addHeaderPictures(it) }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getPictures().collectLatest {
                 adapter.submitData(it)

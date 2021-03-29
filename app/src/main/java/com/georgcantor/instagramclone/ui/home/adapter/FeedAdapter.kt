@@ -18,6 +18,13 @@ class FeedAdapter(
     private val clickListener: (Picture?) -> Unit
 ) : PagingDataAdapter<Picture, RecyclerView.ViewHolder>(DiffCallback) {
 
+    private var pictures = listOf<Picture>()
+
+    fun addHeaderPictures(pictures: List<Picture>) {
+        this.pictures = pictures
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             TYPE_HEADER -> HeaderViewHolder(ItemHeaderBinding.inflate(from(parent.context), parent, false))
@@ -57,12 +64,7 @@ class FeedAdapter(
                     }
                 }
             }
-            is HeaderViewHolder -> {
-                with(holder) {
-                    itemView.context.loadCircleImage(pic?.userImageURL, binding.circleImage)
-                    binding.name.text = pic?.user
-                }
-            }
+            is HeaderViewHolder -> holder.binding.headerRecycler.adapter = HeaderAdapter(pictures)
         }
     }
 
